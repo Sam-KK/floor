@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>楼层滚动效果</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/floor.css" />
+</head>
+<body>
+<ul id="LoutiNav">
+    <li class="active"> <i>1F</i>
+        <span>服饰</span>
+    </li>
+    <li> <i>2F</i>
+        <span>美妆</span>
+    </li>
+    <li>
+        <i>3F</i>
+        <span>手机</span>
+    </li>
+    <li>
+        <i>4F</i>
+        <span>家电</span>
+    </li>
+    <li>
+        <i>5F</i>
+        <span>数码</span>
+    </li>
+    <li>
+        <i>6F</i>
+        <span>运动</span>
+    </li>
+    <li>
+        <i>7F</i>
+        <span>居家</span>
+    </li>
+    <li>
+        <i>8F</i>
+        <span>母婴</span>
+    </li>
+    <li>
+        <i>9F</i>
+        <span>食品</span>
+    </li>
+    <li>
+        <i>10F</i>
+        <span>图书</span>
+    </li>
+    <li style="border-bottom: none;">
+        <i>11F</i>
+        <span>服务</span>
+    </li>
+</ul>
+<div id="goTop">
+    <span id="erweima">我是二维码</span>
+    Top
+</div>
+
+<div id="header">头部</div>
+<div id="main">
+    <div class="louceng" style="background: papayawhip;">服饰</div>
+    <div class="louceng"style="background: peachpuff;">美妆</div>
+    <div class="louceng" style="background: peru;">手机</div>
+    <div class="louceng" style="background: pink;">家电</div>
+    <div class="louceng" style="background: palegoldenrod;">数码</div>
+    <div class="louceng" style="background: plum;">运动</div>
+    <div class="louceng" style="background: powderblue;">居家</div>
+    <div class="louceng"  style="background: rosybrown;">母婴</div>
+    <div class="louceng" style="background: cornflowerblue">食品</div>
+    <div class="louceng" style="background: mediumpurple;">图书</div>
+    <div class="louceng" style="background: darkslateblue;">服务</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var oNav = $('#LoutiNav'); //导航壳
+        var aNav = oNav.find('li'); //导航
+        var aDiv = $('#main .louceng'); //楼层
+        var oTop = $('#goTop');
+        //回到顶部
+        $(window).scroll(function() {
+                var winH = $(window).height(); //可视窗口高度
+                var iTop = $(window).scrollTop(); //鼠标滚动的距离
+
+                if (iTop >= $('#header').height()) {
+                    oNav.fadeIn();
+                    oTop.fadeIn();
+                    //鼠标滑动式改变
+                    aDiv.each(function() {
+                        if (winH + iTop - $(this).offset().top > winH / 2) {
+                            aNav.removeClass('active');
+                            aNav.eq($(this).index()).addClass('active');
+                        }
+                    })
+                } else {
+                    oNav.fadeOut();
+                    oTop.fadeOut();
+                }
+            })
+            //点击top回到顶部
+        oTop.click(function() {
+                $('body,html').animate({
+                    "scrollTop": 0
+                }, 500)
+            })
+            //点击回到当前楼层
+        aNav.click(function() {
+            var t = aDiv.eq($(this).index()).offset().top;
+            $('body,html').animate({
+                "scrollTop": t
+            }, 500);
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    });
+</script>
+</body>
+</html>

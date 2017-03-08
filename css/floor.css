@@ -1,0 +1,14 @@
+@charset "utf-8";
+/*css document*/
+#LoutiNav{ border: 1px solid gray; width: 30px; position: fixed; top: 150px; left: 50px; display: none;}
+            #LoutiNav li{ width: 30px; height: 30px;border-bottom: 1px solid gray; line-height: 30px; text-align: center; cursor: pointer;}
+            #LoutiNav span{display: none;}
+            #LoutiNav .active{background: white; color: darkred;}
+            #LoutiNav li:hover span{display: block; font-size: 12px; background: darkred; color: white;}
+            #LoutiNav li:hover i{display: none;}
+            #goTop{width: 40px;height: 40px; line-height: 40px;text-align: center; background: gray; position: fixed;bottom: 30px; right: 30px; cursor: pointer;border-radius: 5px; display: none; }
+            #goTop:hover{background: darkred; color: white;}
+            #goTop:hover span{display: block;}
+            #header{height: 200px; background: palegoldenrod; text-align: center; line-height: 200px; font-size: 72px; margin: 0 auto;}
+            .louceng{ height: 810px; width: 1440;text-align: center; line-height: 800px; font-size: 120px; margin: 0 auto;}
+            #erweima{width: 130px; height: 130px; background: palegreen; display: none; position: absolute; right: 46px; bottom: 5px;line-height: 130px; text-align: center; font-size: 20px; border-radius:10px ;}
